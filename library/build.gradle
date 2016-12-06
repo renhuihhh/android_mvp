@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    // base import
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // support
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile 'com.android.support:cardview-v7:' + rootProject.supportLibraryVersion
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    // JUnit
+    testCompile "junit:junit:$rootProject.junitVersion"
+    // agera
+    compile "com.google.android.agera:agera:$rootProject.ageraLibrariesVersion"
+    // gif
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    // okhttp
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.gsonConvertVersion"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+}
